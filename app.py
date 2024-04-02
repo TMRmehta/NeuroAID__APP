@@ -291,6 +291,7 @@ if authentication_status:
     if uploaded_file is not None:
       s3 = boto3.client('s3', aws_access_key_id= st.secrets["aws"]["AWS_ACCESS_KEY_ID"], aws_secret_access_key=st.secrets["aws"]["AWS_SECRET_ACCESS_KEY"])
       s3.upload_fileobj(uploaded_file, "neuroaid", "test")
+      uploaded_file.seek(0)
       if (Model_option == 0):
         file_bytes = np.asarray(bytearray(uploaded_file.read()), dtype=np.uint8)
         image = cv2.imdecode(file_bytes, 1)
