@@ -14,3 +14,4 @@ tf_keras_vis
 streamlit_authenticator==0.1.5
 gdown
 xgboost
+boto3
