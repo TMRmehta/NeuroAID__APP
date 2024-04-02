@@ -289,11 +289,11 @@ if authentication_status:
     #File Input
     uploaded_file = st.file_uploader("Upload Image")
     if uploaded_file is not None:
+      file_bytes = np.asarray(bytearray(uploaded_file.read()), dtype=np.uint8)
+      uploaded_file.seek(0)
       s3 = boto3.client('s3', aws_access_key_id= st.secrets["aws"]["AWS_ACCESS_KEY_ID"], aws_secret_access_key=st.secrets["aws"]["AWS_SECRET_ACCESS_KEY"])
       s3.upload_fileobj(uploaded_file, "neuroaid", "test")
-      uploaded_file.seek(0)
       if (Model_option == 0):
-        file_bytes = np.asarray(bytearray(uploaded_file.read()), dtype=np.uint8)
         image = cv2.imdecode(file_bytes, 1)
         image = cropping (image)
         st.image(image, channels="BGR")
@@ -323,7 +323,6 @@ if authentication_status:
         ax.matshow(imp_reshaped, cmap=plt.cm.hot)
         plt.title("Pixel importances using impurity values")
       elif (Model_option ==1):
-        file_bytes = np.asarray(bytearray(uploaded_file.read()), dtype=np.uint8)
         image = cv2.imdecode(file_bytes, 1)
         image = cropping (image)
         st.image(image, channels="BGR")
@@ -355,7 +354,6 @@ if authentication_status:
         st.write("<h4 style='text-align: left; color: blue;'>For the uploaded image shown above explainability analyis was performed and the following Saliency Map shows the tumorous areas.</h4>", unsafe_allow_html = True)
         st.image(saliency_map[0])
       elif (Model_option ==2):
-        file_bytes = np.asarray(bytearray(uploaded_file.read()), dtype=np.uint8)
         image = cv2.imdecode(file_bytes, 1)
         image = cropping (image)
         st.image(image, channels="BGR")
@@ -392,7 +390,6 @@ if authentication_status:
       else:
         base_modelVgg16 = load_model("base_modelVGG16.joblib")
         base_model_ResNet50 = load_model("base_model_ResNet50.joblib")
-        file_bytes = np.asarray(bytearray(uploaded_file.read()), dtype=np.uint8)
         image = cv2.imdecode(file_bytes, 1)
         image = cropping (image)
         st.image(image, channels="BGR")
