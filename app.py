@@ -499,7 +499,7 @@ if authentication_status:
           st.write(f"<h4 style='text-align: left; color: orange;'>There is **no tumor** detected with a probability of {prob:.2f}%.</h4>", unsafe_allow_html=True)
         if (selected_explainability == 'Cohort Level'):
           if (selected_model == 'KNC' or selected_model=='Naive Bayes'or selected_model=='VGG16' or selected_model == 'KNC-VGG16' or selected_model=='KNC-ResNet50' or selected_model == 'KNC-Fused_Future(VGG16+ResNet50)' ):
-            surrogate_model = load("surrogate_model.joblib")
+            surrogate_model = load_model("surrogate_model.joblib")
             importances = surrogate_model.feature_importances_
           else:
             importances = Selectedmodel.feature_importances_
