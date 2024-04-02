@@ -292,7 +292,9 @@ if authentication_status:
     if uploaded_file is not None:
       file_bytes = np.asarray(bytearray(uploaded_file.read()), dtype=np.uint8)
       uploaded_file.seek(0)
-      s3.upload_fileobj(uploaded_file, "neuroaid", "test")
+      if selected_save:
+         filename = username + '_' + Selected_date + '_' + selected_model
+         s3.upload_fileobj(uploaded_file, "neuroaid", filename)
       if (Model_option == 0):
         image = cv2.imdecode(file_bytes, 1)
         image = cropping (image)
