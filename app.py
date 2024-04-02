@@ -467,13 +467,19 @@ if authentication_status:
       stored_information = {'patient name' : selected_patient, 'uploaded image' : image, 'heatmap' : imp_reshaped, 'prediction' : pred, 'probabilities' : pred_prob, 
                            'selected diagnosis' : Selected_diagnosis, 'selected model' : selected_model, 'date' : selected_date}
       serializedMyData = pickle.dumps(stored_information)
-      s3.put_object(Bucket='neuroaid',Key='stored_imformation', Body=serializedMyData)
+      s3.put_object(Bucket='neuroaid',Key='stored_information', Body=serializedMyData)
       
     else:
       st.write(':green[If you do not have an image, you can download a sample MRI image from image library,] https://openneuro.org/')
 ##  when the records are saved to the database Save
   with Report_tab:
 ##  Display the retrieved records here
+    obj = bucket.Object("stored_imformation").get()
+    body = obj.get('Body')
+    stored_information = pickle.loads(body)
+    st.image(stored_information['uploaded image'],channels='BGR')
+    st.write(stored_information['patient name'])
+##Unrelated images    
     if (selected_explainability == 'Cohort Level'):
       if (selected_ex_display == 'Feature Importance Pareto and Brain Heat Map'):
         if (Selected_diagnosis == 'Detection'):
