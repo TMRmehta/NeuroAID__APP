@@ -29,7 +29,9 @@ from tensorflow.keras import backend as K
 
 model_URLs ={'KNCFC.joblib':'https://drive.google.com/uc?id=1-8avHm0vfJbwXJ7nqBmRq3JoZbg3ZGBY',
  'surrogate_model.joblib': 'https://drive.google.com/uc?id=1-5Vyh7fC2T7X55e7RDsbbRXuHIjQAlRT',
-  'XGBC.joblib' : 'https://drive.google.com/uc?id=1qJkWkMuml4e-1pvrArd9SVscAtO1fDtJ'}
+  'XGBC.joblib' : 'https://drive.google.com/uc?id=1qJkWkMuml4e-1pvrArd9SVscAtO1fDtJ,
+  'KNCVC.joblib' : 'https://drive.google.com/uc?id=1-3wQWGmd0cJzV9Zf2FlyYjhyUqcvuVpf',
+            }
 @st.cache_resource
 def load_model(model_name):
   gdown.download(model_URLs[model_name], model_name)
@@ -240,7 +242,7 @@ if authentication_status:
             image = Image.open("Model_RFC.jpg")
             st.image(image)
       elif (selected_model == 'XGBoost'):
-          Selectedmodel = load("XGBC.joblib")
+          Selectedmodel = load_model("XGBC.joblib")
           Model_option = 0
           if (Model_Metrics_Selection):
             st.subheader(':green[Model Performance Metrics]')
@@ -254,7 +256,7 @@ if authentication_status:
             image = Image.open("Model_XGBC.jpg")
             st.image(image)
       else:
-          Selectedmodel = load("KNCVC.joblib")
+          Selectedmodel = load_model("KNCVC.joblib")
           Model_option = 3
           if (Model_Metrics_Selection):
             st.subheader(':green[Model Performance Metrics]')
