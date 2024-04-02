@@ -531,7 +531,7 @@ if authentication_status:
           image = Image.open("Patient_C.jpg")
           st.image(image)
       stored_information = {'patient name' : selected_patient, 'uploaded image' : image, 'prediction' : pred, 'probabilities' : pred_prob, 
-                           'selected diagnosis' : Selected_diagnosis, 'selected model' : selected_model, 'date' : selected_date}
+                           'selected diagnosis' : Selected_diagnosis, 'selected model' : selected_model, 'date' : selected_date, 'heatmap' : imp_reshaped}
       serializedMyData = pickle.dumps(stored_information)
       s3.put_object(Bucket='neuroaid',Key='stored_information', Body=serializedMyData)
       
@@ -543,9 +543,14 @@ if authentication_status:
     obj = s3.get_object(Bucket ="neuroaid",Key='stored_information')
     body = obj.get('Body')
     stored_information = pickle.loads(body.read())
-    st.image(stored_information['uploaded image'],channels='BGR')
+    st.write(stored_information['date'])
     st.write(stored_information['patient name'])
-    #st.image(stored_information['heatmap'])
+    st.image(stored_information['uploaded image'],channels='BGR')   
+    st.write(stored_information['selected diagnosis'])
+    st.write(stored_information['selected model'])   
+    st.write(stored_information['prediction'])
+    st.write(stored_information['probabilities'])
+    st.pyplot(stored_information['heatmap'])
 ##Unrelated images    
     if (selected_explainability == 'Cohort Level'):
       if (selected_ex_display == 'Feature Importance Pareto and Brain Heat Map'):
