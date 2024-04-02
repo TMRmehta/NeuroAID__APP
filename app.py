@@ -476,7 +476,7 @@ if authentication_status:
 ##  Display the retrieved records here
     obj = s3.get_object(Bucket ="neuroaid",Key='stored_information')
     body = obj.get('Body')
-    stored_information = pickle.loads(body)
+    stored_information = pickle.loads(body.read())
     st.image(stored_information['uploaded image'],channels='BGR')
     st.write(stored_information['patient name'])
 ##Unrelated images    
