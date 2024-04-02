@@ -129,7 +129,7 @@ if authentication_status:
       selected_ex_display = st.sidebar.selectbox(':green[Display]', ['Feature Importance Pareto and Brain Heat Map','Feature Importance Pareto', 'Brain Heat Map'])
   else:
       selected_ex_display = st.sidebar.selectbox(':green[Display]', ['Tumor Saliency Map','Contrast Map'])
-  #selected_save = st.sidebar.button(':green[Save Record]')
+  selected_save = st.sidebar.button(':green[Save Record]')
   with Data_tab:
     image = Image.open("DS1.jpg")
     st.image(image)
@@ -292,10 +292,11 @@ if authentication_status:
     if uploaded_file is not None:
       file_bytes = np.asarray(bytearray(uploaded_file.read()), dtype=np.uint8)
       uploaded_file.seek(0)
-      if st.sidebar.button(':green[Save Record]'):
+      if selected_save:
          filename = username + '_' + selected_date.strftime('%m-%d-%Y') + '_' + selected_model
          st.write('upload complete')
          s3.upload_fileobj(uploaded_file, "neuroaid", filename)
+         selected_save = False
       if (Model_option == 0):
         image = cv2.imdecode(file_bytes, 1)
         image = cropping (image)
