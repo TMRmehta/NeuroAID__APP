@@ -208,7 +208,7 @@ if authentication_status:
             image = Image.open("Model_VGG16.jpg")
             st.image(image)
       else:
-          Selectedmodel = load("KNCR.joblib")
+          Selectedmodel = load_model("KNCR.joblib")
           Model_option = 3
           if (Model_Metrics_Selection):
             st.subheader(':green[Model Performance Metrics]')
