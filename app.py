@@ -31,6 +31,23 @@ model_URLs ={'KNCFC.joblib':'https://drive.google.com/uc?id=1-8avHm0vfJbwXJ7nqBm
  'surrogate_model.joblib': 'https://drive.google.com/uc?id=1-5Vyh7fC2T7X55e7RDsbbRXuHIjQAlRT',
   'XGBC.joblib' : 'https://drive.google.com/uc?id=1qJkWkMuml4e-1pvrArd9SVscAtO1fDtJ',
   'KNCVC.joblib' : 'https://drive.google.com/uc?id=1-3wQWGmd0cJzV9Zf2FlyYjhyUqcvuVpf',
+  'KNCRC.joblib' : 'https://drive.google.com/uc?id=1xPDwH0otQ4eHn5AgygiVlP4315vtvtRr',
+  'base_model_ResNet50.joblib' : 'https://drive.google.com/uc?id=1-AOoKbmMcrJctk9uBHA3YDcPcj9N0AvP',
+  'KNCV.joblib' : 'https://drive.google.com/uc?id=1NFEQmu1AHnMGeW4Ja4IxiTOP876Rl-Np',
+  'base_modelVGG16.joblib' : 'https://drive.google.com/uc?id=1-61UxVrEvkdfFUse3-TtkkX0TUUyWE1E,
+  'KNCF.joblib' : 'https://drive.google.com/uc?id=1-2jKmIGLOa0gr-OrDMO7HisF4TUtqyFX',
+  'KNCR.joblib' : 'https://drive.google.com/uc?id=1oLi5kstjhwrNhxMicaAxNpUjlWR2Feg2',
+  'Vgg16C.joblib' : 'https://drive.google.com/uc?id=1i0M1IOSyDbiI8sbhuYzr-3is4yYkojmr',
+  'KNC.joblib' : 'https://drive.google.com/uc?id=1-3KLHsQ89D5A9uxTxtQG-onROt1QBtCG',
+  'RFC.joblib' : 'https://drive.google.com/uc?id=1--2j8gDortml1lowVX75Pwz4OImeIwQR',
+  'NBC.joblib' : 'https://drive.google.com/uc?id=1E9sTn7Xja584Y6rEcVeFQFrQlVuLLveW',
+  'KNCC.joblib' : 'https://drive.google.com/uc?id=1qDXtEfwT1ZHvu_5x2svLmepdrY2WfvpW',
+  'VGG16.joblib' : 'https://drive.google.com/uc?id=1-2m0seyLAhxBu85pckiGareRimtobW_u',
+  'CNN.joblib' : 'https://drive.google.com/uc?id=1-2gviOJAp02XIMwbE2_PYmbzuAN6LXAt',
+  'NB.joblib' : 'https://drive.google.com/uc?id=1_l9-zTnMFi0eI6caaeR8p4RtHRdBz7eJ',
+  'RF.joblib' : 'https://drive.google.com/uc?id=1DPmtoXGoyj2GkUrJUNJXul9nGuS22bVw',
+  'LR.joblib' : 'https://drive.google.com/uc?id=1kjvR1Cebgf3ASxHAsonhOZtAf8wG8XuX',
+  'XGB.joblib' : 'https://drive.google.com/uc?id=1PlhEd8XB5EbNJ2E0HRoTqyslYo2XXtI5',
             }
 @st.cache_resource
 def load_model(model_name):
@@ -120,28 +137,28 @@ if authentication_status:
     if (Selected_diagnosis == 'Detection'):
       #Load selected model
       if (selected_model == 'Best Model (KNC-ResNet50)'):
-          Selectedmodel = load("KNCR.joblib")
+          Selectedmodel = load_model("KNCR.joblib")
           Model_option = 3
           if (Model_Metrics_Selection):
             st.subheader(':green[Model Performance Metrics]')
             image = Image.open("Model_KNCR.jpg")
             st.image(image)
       elif (selected_model == 'KNC-VGG16'):
-          Selectedmodel = load("KNCV.joblib")
+          Selectedmodel = load_model("KNCV.joblib")
           Model_option = 3
           if (Model_Metrics_Selection):
             st.subheader(':green[Model Performance Metrics]')
             image = Image.open("Model_KNCV.jpg")
             st.image(image)
       elif(selected_model == 'KNC-Fused_Future(VGG16+ResNet50)'):
-          Selectedmodel = load("KNCF.joblib")
+          Selectedmodel = load_model("KNCF.joblib")
           Model_option = 3
           if (Model_Metrics_Selection):
             st.subheader(':green[Model Performance Metrics]')
             image = Image.open("Model_KNCF.jpg")
             st.image(image)
       elif (selected_model == 'KNC'):
-          Selectedmodel = load("KNC.joblib")
+          Selectedmodel = load_model("KNC.joblib")
           surrogate_model = load_model("surrogate_model.joblib")
           Model_option = 0
           if (Model_Metrics_Selection):
@@ -149,42 +166,42 @@ if authentication_status:
             image = Image.open("Model_KNC.jpg")
             st.image(image)
       elif (selected_model == 'Naive Bayes'):
-          Selectedmodel = load("NB.joblib")
+          Selectedmodel = load_model("NB.joblib")
           Model_option = 0
           if (Model_Metrics_Selection):
             st.subheader(':green[Model Performance Metrics]')
             image = Image.open("Model_NB.jpg")
             st.image(image)
       elif (selected_model == 'Random Forest'):
-          Selectedmodel = load("RF.joblib")
+          Selectedmodel = load.model("RF.joblib")
           Model_option = 0
           if (Model_Metrics_Selection):
             st.subheader(':green[Model Performance Metrics]')
             image = Image.open("Model_RF.jpg")
             st.image(image)
       elif (selected_model == 'Logistic Regression'):
-          Selectedmodel = load("LR.joblib")
+          Selectedmodel = load_model("LR.joblib")
           Model_option = 0
           if (Model_Metrics_Selection):
             st.subheader(':green[Model Performance Metrics]')
             image = Image.open("Model_LR.jpg")
             st.image(image)
       elif (selected_model == 'XGBoost'):
-          Selectedmodel = load("XGB.joblib")
+          Selectedmodel = load_model("XGB.joblib")
           Model_option = 0
           if (Model_Metrics_Selection):
             st.subheader(':green[Model Performance Metrics]')
             image = Image.open("Model_XGB.jpg")
             st.image(image)
       elif (selected_model == 'CNN'):
-          Selectedmodel = load("CNN.joblib")
+          Selectedmodel = load_model("CNN.joblib")
           Model_option = 1
           if (Model_Metrics_Selection):
             st.subheader(':green[Model Performance Metrics]')
             image = Image.open("Model_CNN.jpg")
             st.image(image)
       elif (selected_model == 'VGG16'):
-          Selectedmodel = load("VGG16.joblib")
+          Selectedmodel = load_model("VGG16.joblib")
           Model_option = 2
           if (Model_Metrics_Selection):
             st.subheader(':green[Model Performance Metrics]')
@@ -207,7 +224,7 @@ if authentication_status:
             image = Image.open("Model_XGBC.jpg")
             st.image(image)
       elif (selected_model == 'KNC-ResNet50'):
-          Selectedmodel = load("KNCRC.joblib")
+          Selectedmodel = load.model("KNCRC.joblib")
           Model_option = 3
           if (Model_Metrics_Selection):
             st.subheader(':green[Model Performance Metrics]')
@@ -221,21 +238,21 @@ if authentication_status:
             image = Image.open("Model_KNCFC.jpg")
             st.image(image)
       elif (selected_model == 'KNC'):
-          Selectedmodel = load("KNCC.joblib")
+          Selectedmodel = load_model("KNCC.joblib")
           Model_option = 0
           if (Model_Metrics_Selection):
             st.subheader(':green[Model Performance Metrics]')
             image = Image.open("Model_KNCC.jpg")
             st.image(image)
       elif (selected_model == 'Naive Bayes'):
-          Selectedmodel = load("NBC.joblib")
+          Selectedmodel = load_model("NBC.joblib")
           Model_option = 0
           if (Model_Metrics_Selection):
             st.subheader(':green[Model Performance Metrics]')
             image = Image.open("Model_NBC.jpg")
             st.image(image)
       elif (selected_model == 'Random Forest'):
-          Selectedmodel = load("RFC.joblib")
+          Selectedmodel = load_model("RFC.joblib")
           Model_option = 0
           if (Model_Metrics_Selection):
             st.subheader(':green[Model Performance Metrics]')
@@ -249,7 +266,7 @@ if authentication_status:
             image = Image.open("Model_XGBC.jpg")
             st.image(image)
       elif (selected_model == 'VGG16'):
-          Selectedmodel = load("Vgg16C.joblib")
+          Selectedmodel = load_model("Vgg16C.joblib")
           Model_option = 2
           if (Model_Metrics_Selection):
             st.subheader(':green[Model Performance Metrics]')
@@ -369,8 +386,8 @@ if authentication_status:
         st.write("<h4 style='text-align: left; color: blue;'>For the uploaded image shown above explainability analyis was performed and the following Saliency Map shows the tumorous areas.</h4>", unsafe_allow_html = True)
         st.image(saliency_map[0])
       else:
-        base_modelVgg16 = load("base_modelVGG16.joblib")
-        base_model_ResNet50 = load("base_model_ResNet50.joblib")
+        base_modelVgg16 = load_model("base_modelVGG16.joblib")
+        base_model_ResNet50 = load_model("base_model_ResNet50.joblib")
         file_bytes = np.asarray(bytearray(uploaded_file.read()), dtype=np.uint8)
         image = cv2.imdecode(file_bytes, 1)
         image = cropping (image)
