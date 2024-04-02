@@ -550,7 +550,7 @@ if authentication_status:
     st.write(stored_information['selected model'])   
     st.write(stored_information['prediction'])
     st.write(stored_information['probabilities'])
-    st.image(stored_information['heatmap'])
+    st.image((stored_information['heatmap']/np.max(stored_information['heatmap'])))
 ##Unrelated images    
     if (selected_explainability == 'Cohort Level'):
       if (selected_ex_display == 'Feature Importance Pareto and Brain Heat Map'):
