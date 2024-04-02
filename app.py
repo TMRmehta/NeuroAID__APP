@@ -289,13 +289,13 @@ if authentication_status:
     st.write(':green[Please use the Browse button below to select the MRI scan file (jpg, png, gif) from your local drive]')
     #File Input
     uploaded_file = st.file_uploader("Upload Image")
-    if st.sidebar.button(':green[Save Record]'):
-       filename = username + '_' + selected_date.strftime('%m-%d-%Y') #+ '_' + selected_model
-       st.write('upload complete')
-       s3.upload_fileobj(uploaded_file, "neuroaid", filename)
     if uploaded_file is not None:
       file_bytes = np.asarray(bytearray(uploaded_file.read()), dtype=np.uint8)
       uploaded_file.seek(0)
+      if st.sidebar.button(':green[Save Record]'):
+        filename = username + '_' + selected_date.strftime('%m-%d-%Y') #+ '_' + selected_model
+        st.write('upload complete')
+        s3.upload_fileobj(uploaded_file, "neuroaid", filename)
       if (Model_option == 0):
         image = cv2.imdecode(file_bytes, 1)
         image = cropping (image)
