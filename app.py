@@ -305,23 +305,23 @@ if authentication_status:
         #add in if statement here for the type of model
         pred = Selectedmodel.predict(flatten)
         pred_prob = Selectedmodel.predict_proba(flatten)
-        if (selected_model == 'KNC'):
-          importances = surrogate_model.feature_importances_
-        else:
-          importances = Selectedmodel.feature_importances_
-        indices = np.argsort(importances)
-        top10 = []
-        top10 = indices[22491:22500]
-        importance = plt.figure(figsize=(3,3))
-        plt.title('Feature Importances')
-        plt.yticks(range(len(top10)),[i for i in top10])
-        plt.xlabel('Relative Importance')
-        plt.barh(range(len(top10)), importances[top10], color='b', align='center')
-        img_shape = resize.shape
-        imp_reshaped = importances.reshape((150,150))
-        heatmap, ax = plt.subplots(figsize=(3,3))
-        ax.matshow(imp_reshaped, cmap=plt.cm.hot)
-        plt.title("Pixel importances using impurity values")
+#        if (selected_model == 'KNC'):
+#          importances = surrogate_model.feature_importances_
+#        else:
+#          importances = Selectedmodel.feature_importances_
+#        indices = np.argsort(importances)
+#        top10 = []
+#        top10 = indices[22491:22500]
+#        importance = plt.figure(figsize=(3,3))
+#        plt.title('Feature Importances')
+#        plt.yticks(range(len(top10)),[i for i in top10])
+#        plt.xlabel('Relative Importance')
+#        plt.barh(range(len(top10)), importances[top10], color='b', align='center')
+#        img_shape = resize.shape
+#        imp_reshaped = importances.reshape((150,150))
+#        heatmap, ax = plt.subplots(figsize=(3,3))
+#        ax.matshow(imp_reshaped, cmap=plt.cm.hot)
+#        plt.title("Pixel importances using impurity values")
       elif (Model_option ==1):
         image = cv2.imdecode(file_bytes, 1)
         image = cropping (image)
@@ -335,24 +335,24 @@ if authentication_status:
         ypred = Selectedmodel.predict(input)
         pred = np.argmax(ypred, axis=1)
         pred_prob = ypred
-        last_layer = Selectedmodel.layers[-1]
-        last_layer.activation = tf.keras.activations.linear
-        model = tf.keras.models.Model(inputs=Selectedmodel.inputs, outputs=[last_layer.output])
-        from tf_keras_vis.utils.scores import CategoricalScore
-        score = CategoricalScore([1])
-  #Create Saliency object
-        saliency = Saliency(model, clone=False)
-        subplot_args = {
-        'nrows': 1,
-        'ncols': 1,
-          'figsize': (3, 2),
-          'subplot_kw': {'xticks': [], 'yticks': []}
-        }
-  # Generate saliency map
-        saliency_map = saliency(score, input, smooth_samples=20, smooth_noise=0.2)
-        saliency_map = normalize(saliency_map)
-        st.write("<h4 style='text-align: left; color: blue;'>For the uploaded image shown above explainability analyis was performed and the following Saliency Map shows the tumorous areas.</h4>", unsafe_allow_html = True)
-        st.image(saliency_map[0])
+#        last_layer = Selectedmodel.layers[-1]
+#        last_layer.activation = tf.keras.activations.linear
+#        model = tf.keras.models.Model(inputs=Selectedmodel.inputs, outputs=[last_layer.output])
+#        from tf_keras_vis.utils.scores import CategoricalScore
+#        score = CategoricalScore([1])
+#  #Create Saliency object
+#        saliency = Saliency(model, clone=False)
+#        subplot_args = {
+#        'nrows': 1,
+#        'ncols': 1,
+#          'figsize': (3, 2),
+#          'subplot_kw': {'xticks': [], 'yticks': []}
+#        }
+#  # Generate saliency map
+#        saliency_map = saliency(score, input, smooth_samples=20, smooth_noise=0.2)
+#        saliency_map = normalize(saliency_map)
+#        st.write("<h4 style='text-align: left; color: blue;'>For the uploaded image shown above explainability analyis was performed and the following Saliency Map shows the tumorous areas.</h4>", unsafe_allow_html = True)
+#        st.image(saliency_map[0])
       elif (Model_option ==2):
         image = cv2.imdecode(file_bytes, 1)
         image = cropping (image)
@@ -367,26 +367,26 @@ if authentication_status:
         ypred = Selectedmodel.predict(input)
         pred = np.argmax(ypred, axis=1)
         pred_prob = ypred
-        last_layer = Selectedmodel.layers[-1]
-        last_layer.activation = tf.keras.activations.linear
-        model = tf.keras.models.Model(inputs=Selectedmodel.inputs, outputs=[last_layer.output])
-        from tf_keras_vis.utils.scores import CategoricalScore
-        score = CategoricalScore([1])
-  #Create Saliency object
-        saliency = Saliency(model, clone=False)
-
-        subplot_args = {
-        'nrows': 1,
-        'ncols': 1,
-          'figsize': (5, 4),
-          'subplot_kw': {'xticks': [], 'yticks': []}
-        }
-  # Generate saliency map
-        saliency_map = saliency(score, input, smooth_samples=20, smooth_noise=0.2)
-        saliency_map = normalize(saliency_map)
-        saliencymap = plt.imshow(saliency_map[0], interpolation='nearest',cmap='Reds')
-        st.write("<h4 style='text-align: left; color: blue;'>For the uploaded image shown above explainability analyis was performed and the following Saliency Map shows the tumorous areas.</h4>", unsafe_allow_html = True)
-        st.image(saliency_map[0])
+#        last_layer = Selectedmodel.layers[-1]
+#        last_layer.activation = tf.keras.activations.linear
+#        model = tf.keras.models.Model(inputs=Selectedmodel.inputs, outputs=[last_layer.output])
+#        from tf_keras_vis.utils.scores import CategoricalScore
+#        score = CategoricalScore([1])
+#  #Create Saliency object
+#        saliency = Saliency(model, clone=False)
+#
+#        subplot_args = {
+#        'nrows': 1,
+#        'ncols': 1,
+#          'figsize': (5, 4),
+#          'subplot_kw': {'xticks': [], 'yticks': []}
+#        }
+#  # Generate saliency map
+#        saliency_map = saliency(score, input, smooth_samples=20, smooth_noise=0.2)
+#        saliency_map = normalize(saliency_map)
+#        saliencymap = plt.imshow(saliency_map[0], interpolation='nearest',cmap='Reds')
+#        st.write("<h4 style='text-align: left; color: blue;'>For the uploaded image shown above explainability analyis was performed and the following Saliency Map shows the tumorous areas.</h4>", unsafe_allow_html = True)
+#        st.image(saliency_map[0])
       else:
         base_modelVgg16 = load_model("base_modelVGG16.joblib")
         base_model_ResNet50 = load_model("base_model_ResNet50.joblib")
@@ -403,18 +403,46 @@ if authentication_status:
   #      im = imge.img_to_array(input)
   #      img = preprocess_input(np.expand_dims(im.copy(), axis=0))
         if (selected_model == 'KNC-VGG16'):
-          feature = base_model.predict(input)
+          feature = base_model_Vgg16.predict(input)
+          feature_np = np.array(feature)
+          array1 = feature_np.flatten().reshape(1, -1)
+          ypred = Selectedmodel.predict(array1)
+          pred = np.argmax(ypred, axis=1)
+          pred_prob = ypred
         elif (selected_model == 'KNC-ResNet50'):
           feature = base_model_ResNet50.predict(input)
+          feature_np = np.array(feature)
+          array1 = feature_np.flatten().reshape(1, -1)
+          ypred = Selectedmodel.predict(array1)
+          if (Selected_diagnosis == 'Classification'):
+            pred = np.argmax(ypred, axis =1)
+            pred_prob = ypred
+          else:
+            pred = np.argmax(ypred)
+            pred_prob = Selectedmodel.predict_proba(flatten)
         else:
-          featurevgg16 = base_modelVgg16.predict(input)
+          featurevgg16 = base_model_Vgg16.predict(input)
+          featurevgg16_np = np.array(featurevgg16)
+          array1vgg16 = featurevgg16_np.flatten().reshape(1, -1)
           featureresnet50 = base_model_ResNet50.predict(input)
-          feature = np.concatenate((featurevgg16, featureresnet50), axis=1)
-        feature_np = np.array(feature)
-        array1 = feature_np.flatten().reshape(1, -1)
-        ypred = Selectedmodel.predict(array1)
-        pred = np.argmax(ypred, axis=1)
-        pred_prob = ypred
+          featureresnet50_np = np.array(featureresnet50)
+          array1resnet50 = featureresnet50_np.flatten().reshape(1, -1)
+          array1 = np.concatenate((array1vgg16, array1resnet50), axis=1)
+          ypred = Selectedmodel.predict(array1)
+          pred = np.argmax(ypred, axis=1)
+          pred_prob = ypred
+#        if (selected_model == 'KNC-VGG16'):
+#          feature = base_model.predict(input)
+#        elif (selected_model == 'KNC-ResNet50'):
+#          feature = base_model_ResNet50.predict(input)
+#        else:
+#          featurevgg16 = base_modelVgg16.predict(input)
+#          featureresnet50 = base_model_ResNet50.predict(input)
+#          feature = np.concatenate((featurevgg16, featureresnet50), axis=1)
+#        feature_np = np.array(feature)
+#       ypred = Selectedmodel.predict(array1)
+#        pred = np.argmax(ypred, axis=1)
+#        pred_prob = ypred
       st.write("<h4 style='text-align: left; color: blue;'>For the uploaded image shown above, selected model was used to perform the screening analysis.</h4>", unsafe_allow_html = True)
       if (Selected_diagnosis == 'Detection'):
         if pred == 1:
@@ -424,6 +452,24 @@ if authentication_status:
           prob = 100*pred_prob[0][0]
           st.write(f"<h4 style='text-align: left; color: orange;'>There is ** no tumor** detected with a probability of {prob:.2f}%.</h4>", unsafe_allow_html=True)
         if (selected_explainability == 'Cohort Level'):
+          if (selected_model == 'KNC' or selected_model=='Naive Bayes' or selected_model=='Logistic Regression' or selected_model == 'CNN' or selected_model=='VGG16' or selected_model == 'KNC-VGG16' or selected_model=='KNC-ResNet50' or selected_model == 'KNC-Fused_Future(VGG16+ResNet50)' or selected_model == 'Best Model(KNC-Resnet50)' ):
+            surrogate_model = load("surrogate_model.joblib")
+            importances = surrogate_model.feature_importances_
+          else:
+            importances = Selectedmodel.feature_importances_
+          indices = np.argsort(importances)
+          top10 = []
+          top10 = indices[22491:22500]
+          importance = plt.figure(figsize=(3,3))
+          plt.title('Feature Importances')
+          plt.yticks(range(len(top10)),[i for i in top10])
+          plt.xlabel('Relative Importance')
+          plt.barh(range(len(top10)), importances[top10], color='b', align='center')
+          img_shape = resize.shape
+          imp_reshaped = importances.reshape((150,150))
+          heatmap, ax = plt.subplots(figsize=(3,3))
+          ax.matshow(imp_reshaped, cmap=plt.cm.hot)
+          plt.title("Pixel importances using impurity values")
           if (selected_ex_display == 'Feature Importance Pareto and Brain Heat Map'):
             st.write("<h4 style='text-align: left; color: blue;'>For the uploaded image shown above explainability analyis was performed and the following plots show the tumorous areas.</h4>", unsafe_allow_html = True)
             st.pyplot(importance)
@@ -436,7 +482,8 @@ if authentication_status:
             st.pyplot(heatmap)
         else:
           st.write("<h4 style='text-align: left; color: blue;'>For the uploaded image shown above explainability analyis was performed and the following plot shows the tumorous areas.</h4>", unsafe_allow_html = True)
-          st.pyplot(shap_plot)
+          image = Image.open("Patient_D.jpg")
+          st.image(image)
       else:
         if (pred == 3):
           prob = 100*pred_prob[0][3]
@@ -451,6 +498,24 @@ if authentication_status:
           prob = 100*pred_prob[0][0]
           st.write(f"<h4 style='text-align: left; color: orange;'>There is **no tumor** detected with a probability of {prob:.2f}%.</h4>", unsafe_allow_html=True)
         if (selected_explainability == 'Cohort Level'):
+          if (selected_model == 'KNC' or selected_model=='Naive Bayes'or selected_model=='VGG16' or selected_model == 'KNC-VGG16' or selected_model=='KNC-ResNet50' or selected_model == 'KNC-Fused_Future(VGG16+ResNet50)' ):
+            surrogate_model = load("surrogate_model.joblib")
+            importances = surrogate_model.feature_importances_
+          else:
+            importances = Selectedmodel.feature_importances_
+          indices = np.argsort(importances)
+          top10 = []
+          top10 = indices[22491:22500]
+          importance = plt.figure(figsize=(3,3))
+          plt.title('Feature Importances')
+          plt.yticks(range(len(top10)),[i for i in top10])
+          plt.xlabel('Relative Importance')
+          plt.barh(range(len(top10)), importances[top10], color='b', align='center')
+          img_shape = resize.shape
+          imp_reshaped = importances.reshape((150,150))
+          heatmap, ax = plt.subplots(figsize=(3,3))
+          ax.matshow(imp_reshaped, cmap=plt.cm.hot)
+          plt.title("Pixel importances using impurity values")
           if (selected_ex_display == 'Feature Importance Pareto and Brain Heat Map'):
             st.write("<h4 style='text-align: left; color: blue;'>For the uploaded image shown above explainability analyis was performed and the following plots show the tumorous areas.</h4>", unsafe_allow_html = True)
             st.pyplot(importance)
@@ -463,7 +528,8 @@ if authentication_status:
             st.pyplot(heatmap)
         else:
           st.write("<h4 style='text-align: left; color: blue;'>For the uploaded image shown above explainability analyis was performed and the following plot shows the tumorous areas.</h4>", unsafe_allow_html = True)
-          st.pyplot(shap_plot)
+          image = Image.open("NeuroAID//Patient_C.jpg")
+          st.image(image)
       stored_information = {'patient name' : selected_patient, 'uploaded image' : image, 'heatmap' : imp_reshaped, 'prediction' : pred, 'probabilities' : pred_prob, 
                            'selected diagnosis' : Selected_diagnosis, 'selected model' : selected_model, 'date' : selected_date}
       serializedMyData = pickle.dumps(stored_information)
