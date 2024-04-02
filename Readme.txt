@@ -1,0 +1,1 @@
+This is the repo or NeuroAID project. In this project different Deep Learning/Machine Learning approaches were investigated to develop robust brain tumor detection and a classification system based on MRI scans. In the first phase of this project, clustering based models with two classes (tumor or no tumor) were developed for purposes of detection. 
