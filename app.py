@@ -298,7 +298,7 @@ if authentication_status:
       if (Model_option == 0):
         image = cv2.imdecode(file_bytes, 1)
         image = cropping (image)
-        st.image(image, channels="BGR")
+        st.image(image, channels="BGR", width = 1000)
         resize = cv2.resize(image, (150,150))
         gray = cv2.cvtColor(resize, cv2.COLOR_BGR2GRAY)
         nml = (gray-np.min(gray))/(np.max(gray)-np.min(gray))
