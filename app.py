@@ -294,6 +294,7 @@ if authentication_status:
       uploaded_file.seek(0)
       if st.sidebar.button(':green[Save Record]'):
          filename = username + '_' + selected_date.strftime('%m-%d-%Y') + '_' + selected_model
+         st.write('upload complete')
          s3.upload_fileobj(uploaded_file, "neuroaid", filename)
       if (Model_option == 0):
         image = cv2.imdecode(file_bytes, 1)
