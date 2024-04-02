@@ -528,7 +528,7 @@ if authentication_status:
             st.pyplot(heatmap)
         else:
           st.write("<h4 style='text-align: left; color: blue;'>For the uploaded image shown above explainability analyis was performed and the following plot shows the tumorous areas.</h4>", unsafe_allow_html = True)
-          image = Image.open("NeuroAID//Patient_C.jpg")
+          image = Image.open("Patient_C.jpg")
           st.image(image)
       stored_information = {'patient name' : selected_patient, 'uploaded image' : image, 'heatmap' : heatmap, 'prediction' : pred, 'probabilities' : pred_prob, 
                            'selected diagnosis' : Selected_diagnosis, 'selected model' : selected_model, 'date' : selected_date}
