@@ -34,7 +34,7 @@ model_URLs ={'KNCFC.joblib':'https://drive.google.com/uc?id=1-8avHm0vfJbwXJ7nqBm
   'KNCRC.joblib' : 'https://drive.google.com/uc?id=1xPDwH0otQ4eHn5AgygiVlP4315vtvtRr',
   'base_model_ResNet50.joblib' : 'https://drive.google.com/uc?id=1-AOoKbmMcrJctk9uBHA3YDcPcj9N0AvP',
   'KNCV.joblib' : 'https://drive.google.com/uc?id=1NFEQmu1AHnMGeW4Ja4IxiTOP876Rl-Np',
-  'base_modelVGG16.joblib' : 'https://drive.google.com/uc?id=1-61UxVrEvkdfFUse3-TtkkX0TUUyWE1E,
+  'base_modelVGG16.joblib' : 'https://drive.google.com/uc?id=1-61UxVrEvkdfFUse3-TtkkX0TUUyWE1E',
   'KNCF.joblib' : 'https://drive.google.com/uc?id=1-2jKmIGLOa0gr-OrDMO7HisF4TUtqyFX',
   'KNCR.joblib' : 'https://drive.google.com/uc?id=1oLi5kstjhwrNhxMicaAxNpUjlWR2Feg2',
   'Vgg16C.joblib' : 'https://drive.google.com/uc?id=1i0M1IOSyDbiI8sbhuYzr-3is4yYkojmr',
