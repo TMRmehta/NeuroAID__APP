@@ -464,6 +464,11 @@ if authentication_status:
         else:
           st.write("<h4 style='text-align: left; color: blue;'>For the uploaded image shown above explainability analyis was performed and the following plot shows the tumorous areas.</h4>", unsafe_allow_html = True)
           st.pyplot(shap_plot)
+      stored_information = {'patient name' : selected_patient, 'uploaded image' : image, 'heatmap' : imp_reshaped, 'prediction' : pred, 'probabilities' : pred_prob, 
+                           'selected diagnosis' : selected_diagnosis, 'selected model' : selected_model, 'date' : selected_date}
+      serializedMyData = pickle.dumps(stored_information)
+      s3.put_object(Bucket='neuroaid',Key='stored_imformation', Body=serializedMyData)
+      
     else:
       st.write(':green[If you do not have an image, you can download a sample MRI image from image library,] https://openneuro.org/')
 ##  when the records are saved to the database Save
