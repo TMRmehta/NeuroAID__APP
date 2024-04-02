@@ -388,7 +388,7 @@ if authentication_status:
 #        st.write("<h4 style='text-align: left; color: blue;'>For the uploaded image shown above explainability analyis was performed and the following Saliency Map shows the tumorous areas.</h4>", unsafe_allow_html = True)
 #        st.image(saliency_map[0])
       else:
-        base_modelVgg16 = load_model("base_modelVGG16.joblib")
+        base_model_Vgg16 = load_model("base_modelVGG16.joblib")
         base_model_ResNet50 = load_model("base_model_ResNet50.joblib")
         image = cv2.imdecode(file_bytes, 1)
         image = cropping (image)
