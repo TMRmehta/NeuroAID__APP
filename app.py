@@ -29,7 +29,7 @@ from tensorflow.keras import backend as K
 
 model_URLs ={'KNCFC.joblib':'https://drive.google.com/uc?id=1-8avHm0vfJbwXJ7nqBmRq3JoZbg3ZGBY',
  'surrogate_model.joblib': 'https://drive.google.com/uc?id=1-5Vyh7fC2T7X55e7RDsbbRXuHIjQAlRT',
-  'XGBC.joblib' : 'https://drive.google.com/uc?id=1qJkWkMuml4e-1pvrArd9SVscAtO1fDtJ,
+  'XGBC.joblib' : 'https://drive.google.com/uc?id=1qJkWkMuml4e-1pvrArd9SVscAtO1fDtJ',
   'KNCVC.joblib' : 'https://drive.google.com/uc?id=1-3wQWGmd0cJzV9Zf2FlyYjhyUqcvuVpf',
             }
 @st.cache_resource
