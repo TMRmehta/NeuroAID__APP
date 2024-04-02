@@ -474,7 +474,7 @@ if authentication_status:
 ##  when the records are saved to the database Save
   with Report_tab:
 ##  Display the retrieved records here
-    obj = s3.Object("stored_imformation").get()
+    obj = s3.Bucket("neuroaid").Object("stored_imformation").get()
     body = obj.get('Body')
     stored_information = pickle.loads(body)
     st.image(stored_information['uploaded image'],channels='BGR')
