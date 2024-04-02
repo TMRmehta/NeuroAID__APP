@@ -28,7 +28,8 @@ from tensorflow.keras.preprocessing import image
 from tensorflow.keras import backend as K
 
 model_URLs ={'KNCFC.joblib':'https://drive.google.com/uc?id=1-8avHm0vfJbwXJ7nqBmRq3JoZbg3ZGBY',
- 'surrogate_model.joblib': 'https://drive.google.com/uc?id=1-5Vyh7fC2T7X55e7RDsbbRXuHIjQAlRT' }
+ 'surrogate_model.joblib': 'https://drive.google.com/uc?id=1-5Vyh7fC2T7X55e7RDsbbRXuHIjQAlRT',
+  'XGBC.joblib' : 'https://drive.google.com/uc?id=1qJkWkMuml4e-1pvrArd9SVscAtO1fDtJ'}
 @st.cache_resource
 def load_model(model_name):
   gdown.download(model_URLs[model_name], model_name)
@@ -139,7 +140,7 @@ if authentication_status:
             st.image(image)
       elif (selected_model == 'KNC'):
           Selectedmodel = load("KNC.joblib")
-          surrogate_model = load("surrogate_model.joblib")
+          surrogate_model = load_model("surrogate_model.joblib")
           Model_option = 0
           if (Model_Metrics_Selection):
             st.subheader(':green[Model Performance Metrics]')
@@ -197,7 +198,7 @@ if authentication_status:
     else:
       #Load selected model
       if (selected_model == 'Best Model (XGBoost)'):
-          Selectedmodel = load("XGBC.joblib")
+          Selectedmodel = load_model("XGBC.joblib")
           Model_option = 0
           if (Model_Metrics_Selection):
             st.subheader(':green[Model Performance Metrics]')
