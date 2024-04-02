@@ -60,7 +60,7 @@ with open(file_path, "rb") as file:
 #passwords = ["abc123", "abc123"]
 
 authenticator = stauth.Authenticate(names, usernames, hashed_passwords, "NeuroAID", "abcdef", cookie_expiry_days=0)
-image = Image.open('NeuroAID//Banner.jpg')
+image = Image.open('Banner.jpg')
 st.image(image)
 
 name, authentication_status, username = authenticator.login("NeuroAID Login", "main")
@@ -109,9 +109,9 @@ if authentication_status:
       selected_ex_display = st.sidebar.selectbox(':green[Display]', ['Tumor Saliency Map','Contrast Map'])
   selected_save = st.sidebar.button(':green[Save Record]')
   with Data_tab:
-    image = Image.open("NeuroAID//DS1.jpg")
+    image = Image.open("DS1.jpg")
     st.image(image)
-    image = Image.open("NeuroAID//DS2.jpg")
+    image = Image.open("DS2.jpg")
     st.image(image)
   with Diagnostics_tab:
     if (Selected_diagnosis == 'Detection'):
@@ -121,21 +121,21 @@ if authentication_status:
           Model_option = 3
           if (Model_Metrics_Selection):
             st.subheader(':green[Model Performance Metrics]')
-            image = Image.open("NeuroAID//Model_KNCR.jpg")
+            image = Image.open("Model_KNCR.jpg")
             st.image(image)
       elif (selected_model == 'KNC-VGG16'):
           Selectedmodel = load("KNCV.joblib")
           Model_option = 3
           if (Model_Metrics_Selection):
             st.subheader(':green[Model Performance Metrics]')
-            image = Image.open("NeuroAID//Model_KNCV.jpg")
+            image = Image.open("Model_KNCV.jpg")
             st.image(image)
       elif(selected_model == 'KNC-Fused_Future(VGG16+ResNet50)'):
           Selectedmodel = load("KNCF.joblib")
           Model_option = 3
           if (Model_Metrics_Selection):
             st.subheader(':green[Model Performance Metrics]')
-            image = Image.open("NeuroAID//Model_KNCF.jpg")
+            image = Image.open("Model_KNCF.jpg")
             st.image(image)
       elif (selected_model == 'KNC'):
           Selectedmodel = load("KNC.joblib")
@@ -143,56 +143,56 @@ if authentication_status:
           Model_option = 0
           if (Model_Metrics_Selection):
             st.subheader(':green[Model Performance Metrics]')
-            image = Image.open("NeuroAID//Model_KNC.jpg")
+            image = Image.open("Model_KNC.jpg")
             st.image(image)
       elif (selected_model == 'Naive Bayes'):
           Selectedmodel = load("NB.joblib")
           Model_option = 0
           if (Model_Metrics_Selection):
             st.subheader(':green[Model Performance Metrics]')
-            image = Image.open("NeuroAID//Model_NB.jpg")
+            image = Image.open("Model_NB.jpg")
             st.image(image)
       elif (selected_model == 'Random Forest'):
           Selectedmodel = load("RF.joblib")
           Model_option = 0
           if (Model_Metrics_Selection):
             st.subheader(':green[Model Performance Metrics]')
-            image = Image.open("NeuroAID//Model_RF.jpg")
+            image = Image.open("Model_RF.jpg")
             st.image(image)
       elif (selected_model == 'Logistic Regression'):
           Selectedmodel = load("LR.joblib")
           Model_option = 0
           if (Model_Metrics_Selection):
             st.subheader(':green[Model Performance Metrics]')
-            image = Image.open("NeuroAID//Model_LR.jpg")
+            image = Image.open("Model_LR.jpg")
             st.image(image)
       elif (selected_model == 'XGBoost'):
           Selectedmodel = load("XGB.joblib")
           Model_option = 0
           if (Model_Metrics_Selection):
             st.subheader(':green[Model Performance Metrics]')
-            image = Image.open("NeuroAID//Model_XGB.jpg")
+            image = Image.open("Model_XGB.jpg")
             st.image(image)
       elif (selected_model == 'CNN'):
           Selectedmodel = load("CNN.joblib")
           Model_option = 1
           if (Model_Metrics_Selection):
             st.subheader(':green[Model Performance Metrics]')
-            image = Image.open("NeuroAID//Model_CNN.jpg")
+            image = Image.open("Model_CNN.jpg")
             st.image(image)
       elif (selected_model == 'VGG16'):
           Selectedmodel = load("VGG16.joblib")
           Model_option = 2
           if (Model_Metrics_Selection):
             st.subheader(':green[Model Performance Metrics]')
-            image = Image.open("NeuroAID//Model_VGG16.jpg")
+            image = Image.open("Model_VGG16.jpg")
             st.image(image)
       else:
           Selectedmodel = load("KNCR.joblib")
           Model_option = 3
           if (Model_Metrics_Selection):
             st.subheader(':green[Model Performance Metrics]')
-            image = Image.open("NeuroAID//Model_KNCR.jpg")
+            image = Image.open("Model_KNCR.jpg")
             st.image(image)
     else:
       #Load selected model
@@ -201,63 +201,63 @@ if authentication_status:
           Model_option = 0
           if (Model_Metrics_Selection):
             st.subheader(':green[Model Performance Metrics]')
-            image = Image.open("NeuroAID//Model_XGBC.jpg")
+            image = Image.open("Model_XGBC.jpg")
             st.image(image)
       elif (selected_model == 'KNC-ResNet50'):
           Selectedmodel = load("KNCRC.joblib")
           Model_option = 3
           if (Model_Metrics_Selection):
             st.subheader(':green[Model Performance Metrics]')
-            image = Image.open("NeuroAID//Model_KNCRC.jpg")
+            image = Image.open("Model_KNCRC.jpg")
             st.image(image)
       elif(selected_model == 'KNC-Fused_Future(VGG16+ResNet50)'):
           Selectedmodel = load_model("KNCFC.joblib")
           Model_option = 3
           if (Model_Metrics_Selection):
             st.subheader(':green[Model Performance Metrics]')
-            image = Image.open("NeuroAID//Model_KNCFC.jpg")
+            image = Image.open("Model_KNCFC.jpg")
             st.image(image)
       elif (selected_model == 'KNC'):
           Selectedmodel = load("KNCC.joblib")
           Model_option = 0
           if (Model_Metrics_Selection):
             st.subheader(':green[Model Performance Metrics]')
-            image = Image.open("NeuroAID//Model_KNCC.jpg")
+            image = Image.open("Model_KNCC.jpg")
             st.image(image)
       elif (selected_model == 'Naive Bayes'):
           Selectedmodel = load("NBC.joblib")
           Model_option = 0
           if (Model_Metrics_Selection):
             st.subheader(':green[Model Performance Metrics]')
-            image = Image.open("NeuroAID//Model_NBC.jpg")
+            image = Image.open("Model_NBC.jpg")
             st.image(image)
       elif (selected_model == 'Random Forest'):
           Selectedmodel = load("RFC.joblib")
           Model_option = 0
           if (Model_Metrics_Selection):
             st.subheader(':green[Model Performance Metrics]')
-            image = Image.open("NeuroAID//Model_RFC.jpg")
+            image = Image.open("Model_RFC.jpg")
             st.image(image)
       elif (selected_model == 'XGBoost'):
           Selectedmodel = load("XGBC.joblib")
           Model_option = 0
           if (Model_Metrics_Selection):
             st.subheader(':green[Model Performance Metrics]')
-            image = Image.open("NeuroAID//Model_XGBC.jpg")
+            image = Image.open("Model_XGBC.jpg")
             st.image(image)
       elif (selected_model == 'VGG16'):
           Selectedmodel = load("Vgg16C.joblib")
           Model_option = 2
           if (Model_Metrics_Selection):
             st.subheader(':green[Model Performance Metrics]')
-            image = Image.open("NeuroAID//Model_XGBC.jpg")
+            image = Image.open("Model_XGBC.jpg")
             st.image(image)
       else:
           Selectedmodel = load("KNCVC.joblib")
           Model_option = 3
           if (Model_Metrics_Selection):
             st.subheader(':green[Model Performance Metrics]')
-            image = Image.open("NeuroAID//Model_KNCVC.jpg")
+            image = Image.open("Model_KNCVC.jpg")
             st.image(image)
 
     st.divider()
@@ -451,17 +451,17 @@ if authentication_status:
     if (selected_explainability == 'Cohort Level'):
       if (selected_ex_display == 'Feature Importance Pareto and Brain Heat Map'):
         if (Selected_diagnosis == 'Detection'):
-          image = Image.open("NeuroAID//Cohort_D.jpg")
+          image = Image.open("Cohort_D.jpg")
           st.image(image)
         else:
-          image = Image.open("NeuroAID//Cohort_C.jpg")
+          image = Image.open("Cohort_C.jpg")
           st.image(image)
     elif (selected_explainability == 'Patient Level'):
       if (selected_ex_display == 'Contrast Map' ):
         if (Selected_diagnosis == 'Detection'):
-          image = Image.open("NeuroAID//Patient_D.jpg")
+          image = Image.open("Patient_D.jpg")
           st.image(image)
         else:
-          image = Image.open("NeuroAID//Patient_C.jpg")
+          image = Image.open("Patient_C.jpg")
           st.image(image)
 
