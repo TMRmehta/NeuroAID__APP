@@ -224,7 +224,7 @@ if authentication_status:
             image = Image.open("Model_XGBC.jpg")
             st.image(image)
       elif (selected_model == 'KNC-ResNet50'):
-          Selectedmodel = load.model("KNCRC.joblib")
+          Selectedmodel = load_model("KNCRC.joblib")
           Model_option = 3
           if (Model_Metrics_Selection):
             st.subheader(':green[Model Performance Metrics]')
