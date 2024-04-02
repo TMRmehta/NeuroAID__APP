@@ -173,7 +173,7 @@ if authentication_status:
             image = Image.open("Model_NB.jpg")
             st.image(image)
       elif (selected_model == 'Random Forest'):
-          Selectedmodel = load.model("RF.joblib")
+          Selectedmodel = load_model("RF.joblib")
           Model_option = 0
           if (Model_Metrics_Selection):
             st.subheader(':green[Model Performance Metrics]')
