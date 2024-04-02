@@ -95,6 +95,7 @@ if authentication_status == False:
   st.write(" :green[If you don't have an account and would like to signup, please send your name and email address to the NeuroAID administrator at mentat124@gmail.com]")
 
 if authentication_status:
+  s3 = boto3.client('s3', aws_access_key_id= st.secrets["aws"]["AWS_ACCESS_KEY_ID"], aws_secret_access_key=st.secrets["aws"]["AWS_SECRET_ACCESS_KEY"]) 
   st.markdown("<h1 style='text-align: center; color: blue;'>Brain Tumor Screening Diagnostics System</h1>", unsafe_allow_html=True)
   #st.title(":blue[Brain Tumor Screening Diagnostics System]")
   #Text
@@ -291,7 +292,6 @@ if authentication_status:
     if uploaded_file is not None:
       file_bytes = np.asarray(bytearray(uploaded_file.read()), dtype=np.uint8)
       uploaded_file.seek(0)
-      s3 = boto3.client('s3', aws_access_key_id= st.secrets["aws"]["AWS_ACCESS_KEY_ID"], aws_secret_access_key=st.secrets["aws"]["AWS_SECRET_ACCESS_KEY"])
       s3.upload_fileobj(uploaded_file, "neuroaid", "test")
       if (Model_option == 0):
         image = cv2.imdecode(file_bytes, 1)
