@@ -292,10 +292,6 @@ if authentication_status:
     if uploaded_file is not None:
       file_bytes = np.asarray(bytearray(uploaded_file.read()), dtype=np.uint8)
       uploaded_file.seek(0)
-      if st.sidebar.button(':green[Save Record]'):
-        filename = username + '_' + selected_date.strftime('%m-%d-%Y') + '_' + selected_model
-        st.write('upload complete')
-        s3.upload_fileobj(uploaded_file, "neuroaid", filename)
       if (Model_option == 0):
         image = cv2.imdecode(file_bytes, 1)
         image = cropping (image)
@@ -533,11 +529,13 @@ if authentication_status:
           st.write("<h4 style='text-align: left; color: blue;'>For the uploaded image shown above explainability analyis was performed and the following plot shows the tumorous areas.</h4>", unsafe_allow_html = True)
           image = Image.open("Patient_C.jpg")
           st.image(image)
-      stored_information = {'patient name' : selected_patient, 'uploaded image' : image, 'prediction' : pred, 'probabilities' : pred_prob, 
+      if st.sidebar.button(':green[Save Record]'):
+        filename = username + '_' + selected_date.strftime('%m-%d-%Y') + '_' + selected_model
+        st.write('upload complete')
+        stored_information = {'patient name' : selected_patient, 'uploaded image' : image, 'prediction' : pred, 'probabilities' : pred_prob, 
                            'selected diagnosis' : Selected_diagnosis, 'selected model' : selected_model, 'date' : selected_date, 'heatmap' : imp_reshaped}
-      serializedMyData = pickle.dumps(stored_information)
-      s3.put_object(Bucket='neuroaid',Key='stored_information', Body=serializedMyData)
-      
+        serializedMyData = pickle.dumps(stored_information)
+        s3.put_object(Bucket='neuroaid',Key='stored_information', Body=serializedMyData)
     else:
       st.write(':green[If you do not have an image, you can download a sample MRI image from image library,] https://openneuro.org/')
 ##  when the records are saved to the database Save
