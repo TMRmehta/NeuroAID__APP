@@ -545,7 +545,7 @@ if authentication_status:
         filename = username + '_' + selected_date.strftime('%m-%d-%Y') + '_' + selected_model
         st.write('upload complete')
         stored_information = {'patient name' : selected_patient, 'uploaded image' : image, 'prediction' : pred, 'probabilities' : pred_prob, 
-                           'selected diagnosis' : Selected_diagnosis, 'selected model' : selected_model, 'date' : selected_date, 'heatmap' : imp_reshaped}
+                           'selected diagnosis' : Selected_diagnosis, 'selected model' : selected_model, 'date' : selected_date}
         serializedMyData = pickle.dumps(stored_information)
         s3.put_object(Bucket='neuroaid',Key=filename, Body=serializedMyData)
     else:
