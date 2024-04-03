@@ -527,20 +527,21 @@ if authentication_status:
           heatmap, ax = plt.subplots(figsize=(3,3))
           ax.matshow(imp_reshaped, cmap=plt.cm.hot)
           plt.title("Pixel importances using impurity values")
+          Salmap = Image.open("Saliencymap.jpg")
           if (selected_ex_display == 'Feature Importance Pareto and Brain Heat Map'):
             st.write("<h4 style='text-align: left; color: blue;'>For the uploaded image shown above explainability analyis was performed and the following plots show the tumorous areas.</h4>", unsafe_allow_html = True)
             st.pyplot(importance)
-            st.pyplot(heatmap)
+            st.image(Salmap) 
           elif (selected_ex_display == 'Feature Importance Pareto'):
             st.write("<h4 style='text-align: left; color: blue;'>For the uploaded image shown above explainability analyis was performed and the following plot shows the tumorous areas.</h4>", unsafe_allow_html = True)
             st.pyplot(importance)
           else:
             st.write("<h4 style='text-align: left; color: blue;'>For the uploaded image shown above explainability analyis was performed and the following plot shows the tumorous areas.</h4>", unsafe_allow_html = True)
-            st.pyplot(heatmap)
+            st.image(Salmap) 
         else:
           st.write("<h4 style='text-align: left; color: blue;'>For the uploaded image shown above explainability analyis was performed and the following plot shows the tumorous areas.</h4>", unsafe_allow_html = True)
-          image = Image.open("Patient_C.jpg")
-          st.image(image)
+          shapimage = Image.open("shap.jpg")
+          st.image(shapimage)
       if st.sidebar.button(':green[Save Record]'):
         filename = username + '_' + selected_date.strftime('%m-%d-%Y') + '_' + selected_model
         st.write('upload complete')
@@ -574,20 +575,20 @@ if authentication_status:
       #st.image((stored_information['heatmap']/np.max(stored_information['heatmap'])))
       i = i + 1         
 ##Unrelated images    
-    if (selected_explainability == 'Cohort Level'):
-      if (selected_ex_display == 'Feature Importance Pareto and Brain Heat Map'):
-        if (Selected_diagnosis == 'Detection'):
-          image = Image.open("Cohort_D.jpg")
-          st.image(image)
-        else:
-          image = Image.open("Cohort_C.jpg")
-          st.image(image)
-    elif (selected_explainability == 'Patient Level'):
-      if (selected_ex_display == 'Contrast Map' ):
-        if (Selected_diagnosis == 'Detection'):
-          image = Image.open("Patient_D.jpg")
-          st.image(image)
-        else:
-          image = Image.open("Patient_C.jpg")
-          st.image(image)
+#    if (selected_explainability == 'Cohort Level'):
+#      if (selected_ex_display == 'Feature Importance Pareto and Brain Heat Map'):
+#        if (Selected_diagnosis == 'Detection'):
+#          image = Image.open("Cohort_D.jpg")
+#          st.image(image)
+#        else:
+#          image = Image.open("Cohort_C.jpg")
+#          st.image(image)
+#    elif (selected_explainability == 'Patient Level'):
+#      if (selected_ex_display == 'Contrast Map' ):
+#        if (Selected_diagnosis == 'Detection'):
+#          image = Image.open("Patient_D.jpg")
+#          st.image(image)
+#        else:
+#          image = Image.open("Patient_C.jpg")
+#          st.image(image)
 
