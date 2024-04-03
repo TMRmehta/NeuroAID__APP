@@ -546,8 +546,8 @@ if authentication_status:
     for o in result['Contents']:
      if o.get('Key').startswith(username):
       #print(o['Key'])
-      #obj = s3.get_object(Bucket ="neuroaid",Key='stored_information')
-      body = o.get('Body')
+      obj = s3.get_object(Bucket ="neuroaid",Key=o.get('Key'))
+      body = obj.get('Body')
       stored_information = pickle.loads(body.read())
       st.write(stored_information['date'])
       st.write(stored_information['patient name'])
