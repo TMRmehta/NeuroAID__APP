@@ -535,7 +535,7 @@ if authentication_status:
         stored_information = {'patient name' : selected_patient, 'uploaded image' : image, 'prediction' : pred, 'probabilities' : pred_prob, 
                            'selected diagnosis' : Selected_diagnosis, 'selected model' : selected_model, 'date' : selected_date, 'heatmap' : imp_reshaped}
         serializedMyData = pickle.dumps(stored_information)
-        s3.put_object(Bucket='neuroaid',Key='stored_information', Body=serializedMyData)
+        s3.put_object(Bucket='neuroaid',Key=filename, Body=serializedMyData)
     else:
       st.write(':green[If you do not have an image, you can download a sample MRI image from image library,] https://openneuro.org/')
 ##  when the records are saved to the database Save
