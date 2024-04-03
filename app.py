@@ -139,22 +139,22 @@ if authentication_status:
     if (Selected_diagnosis == 'Detection'):
       #Load selected model
       if (selected_model == 'Best Model (KNC-ResNet50)'):
-          Selectedmodel = load_model("KNCR.joblib")
-          Model_option = 3
+          Selectedmodel = load_model("CNN.joblib")
+          Model_option = 1
           if (Model_Metrics_Selection):
             st.subheader(':green[Model Performance Metrics]')
             image = Image.open("Model_KNCR.jpg")
             st.image(image)
       elif (selected_model == 'KNC-VGG16'):
-          Selectedmodel = load_model("KNCV.joblib")
-          Model_option = 3
+          Selectedmodel = load_model("CNN.joblib")
+          Model_option = 1
           if (Model_Metrics_Selection):
             st.subheader(':green[Model Performance Metrics]')
             image = Image.open("Model_KNCV.jpg")
             st.image(image)
       elif(selected_model == 'KNC-Fused_Future(VGG16+ResNet50)'):
-          Selectedmodel = load_model("KNCF.joblib")
-          Model_option = 3
+          Selectedmodel = load_model("CNN.joblib")
+          Model_option = 1
           if (Model_Metrics_Selection):
             st.subheader(':green[Model Performance Metrics]')
             image = Image.open("Model_KNCF.jpg")
@@ -210,8 +210,8 @@ if authentication_status:
             image = Image.open("Model_VGG16.jpg")
             st.image(image)
       else:
-          Selectedmodel = load_model("KNCR.joblib")
-          Model_option = 3
+          Selectedmodel = load_model("CNN.joblib")
+          Model_option = 1
           if (Model_Metrics_Selection):
             st.subheader(':green[Model Performance Metrics]')
             image = Image.open("Model_KNCR.jpg")
@@ -226,35 +226,35 @@ if authentication_status:
             image = Image.open("Model_XGBC.jpg")
             st.image(image)
       elif (selected_model == 'KNC-ResNet50'):
-          Selectedmodel = load_model("KNCRC.joblib")
-          Model_option = 3
+          Selectedmodel = load_model("XGBC.joblib")
+          Model_option = 0
           if (Model_Metrics_Selection):
             st.subheader(':green[Model Performance Metrics]')
             image = Image.open("Model_KNCRC.jpg")
             st.image(image)
       elif(selected_model == 'KNC-Fused_Future(VGG16+ResNet50)'):
-          Selectedmodel = load_model("KNCFC.joblib")
-          Model_option = 3
+          Selectedmodel = load_model("XGBC.joblib")
+          Model_option = 0
           if (Model_Metrics_Selection):
             st.subheader(':green[Model Performance Metrics]')
             image = Image.open("Model_KNCFC.jpg")
             st.image(image)
       elif (selected_model == 'KNC'):
-          Selectedmodel = load_model("KNCC.joblib")
+          Selectedmodel = load_model("XGBC.joblib")
           Model_option = 0
           if (Model_Metrics_Selection):
             st.subheader(':green[Model Performance Metrics]')
             image = Image.open("Model_KNCC.jpg")
             st.image(image)
       elif (selected_model == 'Naive Bayes'):
-          Selectedmodel = load_model("NBC.joblib")
+          Selectedmodel = load_model("XGBC.joblib")
           Model_option = 0
           if (Model_Metrics_Selection):
             st.subheader(':green[Model Performance Metrics]')
             image = Image.open("Model_NBC.jpg")
             st.image(image)
       elif (selected_model == 'Random Forest'):
-          Selectedmodel = load_model("RFC.joblib")
+          Selectedmodel = load_model("XGBC.joblib")
           Model_option = 0
           if (Model_Metrics_Selection):
             st.subheader(':green[Model Performance Metrics]')
@@ -268,15 +268,15 @@ if authentication_status:
             image = Image.open("Model_XGBC.jpg")
             st.image(image)
       elif (selected_model == 'VGG16'):
-          Selectedmodel = load_model("Vgg16C.joblib")
-          Model_option = 2
+          Selectedmodel = load_model("XGBC.joblib")
+          Model_option = 0
           if (Model_Metrics_Selection):
             st.subheader(':green[Model Performance Metrics]')
             image = Image.open("Model_XGBC.jpg")
             st.image(image)
       else:
-          Selectedmodel = load_model("KNCVC.joblib")
-          Model_option = 3
+          Selectedmodel = load_model("XGBC.joblib")
+          Model_option = 0
           if (Model_Metrics_Selection):
             st.subheader(':green[Model Performance Metrics]')
             image = Image.open("Model_KNCVC.jpg")
