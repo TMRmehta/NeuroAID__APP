@@ -295,7 +295,7 @@ if authentication_status:
       if (Model_option == 0):
         image = cv2.imdecode(file_bytes, 1)
         image = cropping (image)
-        st.image(image, channels="BGR", width = 1000)
+        st.image(image, channels="BGR", width = 300)
         resize = cv2.resize(image, (150,150))
         gray = cv2.cvtColor(resize, cv2.COLOR_BGR2GRAY)
         nml = (gray-np.min(gray))/(np.max(gray)-np.min(gray))
@@ -464,7 +464,7 @@ if authentication_status:
           st.write(f"<h4 style='text-align: left; color: orange;'>There is ** no tumor** detected with a probability of {prob:.2f}%.</h4>", unsafe_allow_html=True)
         if (selected_explainability == 'Cohort Level'):
           if (selected_model == 'KNC' or selected_model=='Naive Bayes' or selected_model=='Logistic Regression' or selected_model == 'CNN' or selected_model=='VGG16' or selected_model == 'KNC-VGG16' or selected_model=='KNC-ResNet50' or selected_model == 'KNC-Fused_Future(VGG16+ResNet50)' or selected_model == 'Best Model (KNC-ResNet50)' ):
-            surrogate_model = load("surrogate_model.joblib")
+            surrogate_model = load_model("surrogate_model.joblib")
             importances = surrogate_model.feature_importances_
           else:
             importances = Selectedmodel.feature_importances_
