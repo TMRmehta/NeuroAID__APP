@@ -324,7 +324,7 @@ if authentication_status:
       elif (Model_option ==1):
         image = cv2.imdecode(file_bytes, 1)
         image = cropping (image)
-        st.image(image, channels="BGR")
+        st.image(image, channels="BGR", width = 300)
         resize = cv2.resize(image, (150,150))
         gray = cv2.cvtColor(resize, cv2.COLOR_BGR2GRAY)
         nml = (gray-np.min(gray))/(np.max(gray)-np.min(gray))
@@ -355,7 +355,7 @@ if authentication_status:
       elif (Model_option ==2):
         image = cv2.imdecode(file_bytes, 1)
         image = cropping (image)
-        st.image(image, channels="BGR")
+        st.image(image, channels="BGR", width = 300)
         resize = cv2.resize(image, (150,150))
     #    gray = cv2.cvtColor(resize, cv2.COLOR_BGR2GRAY)
         nml = (resize-np.min(image))/(np.max(image)-np.min(image))
