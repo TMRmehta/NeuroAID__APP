@@ -128,7 +128,7 @@ if authentication_status:
   if (selected_explainability == 'Cohort Level'):
       selected_ex_display = st.sidebar.selectbox(':green[Display]', ['Feature Importance Pareto and Brain Heat Map','Feature Importance Pareto', 'Brain Heat Map'])
   else:
-      selected_ex_display = st.sidebar.selectbox(':green[Display]', ['Tumor Saliency Map','Contrast Map'])
+      selected_ex_display = st.sidebar.selectbox(':green[Display]', ['SHAP Value PLot/Contrast Map'])
   #selected_save = st.sidebar.button(':green[Save Record]')
   with Data_tab:
     image = Image.open("DS1.jpg")
