@@ -48,7 +48,7 @@ model_URLs ={'KNCFC.joblib':'https://drive.google.com/uc?id=1-8avHm0vfJbwXJ7nqBm
   'NB.joblib' : 'https://drive.google.com/uc?id=1_l9-zTnMFi0eI6caaeR8p4RtHRdBz7eJ',
   'RF.joblib' : 'https://drive.google.com/uc?id=1DPmtoXGoyj2GkUrJUNJXul9nGuS22bVw',
   'LR.joblib' : 'https://drive.google.com/uc?id=1kjvR1Cebgf3ASxHAsonhOZtAf8wG8XuX',
-  'XGB.joblib' : 'https://drive.google.com/uc?id=1PlhEd8XB5EbNJ2E0HRoTqyslYo2XXtI5',
+  'XGB.joblib' : 'https://drive.google.com/uc?id=1PlhEd8XB5EbNJ2E0HRoTqyslYo2XXtI5',          
             }
 @st.cache_resource
 def load_model(model_name):
@@ -406,19 +406,25 @@ if authentication_status:
           feature_np = np.array(feature)
           array1 = feature_np.flatten().reshape(1, -1)
           ypred = Selectedmodel.predict(array1)
-          pred = np.argmax(ypred, axis=1)
-          pred_prob = ypred
-        elif (selected_model == 'KNC-ResNet50'):
+          if (Selected_diagnosis == 'Classification'):
+            pred = np.argmax(ypred, axis =1)
+            pred_prob = Selectedmodel.predict_proba(array1)
+          else:
+            pred = ypred
+            pred_prob = Selectedmodel.predict_proba(array1)
+#          pred = np.argmax(ypred, axis=1)
+#          pred_prob = ypred
+        elif (selected_model == 'KNC-ResNet50' or selected_model == 'Best Model (KNC-ResNet50)'):
           feature = base_model_ResNet50.predict(input)
           feature_np = np.array(feature)
           array1 = feature_np.flatten().reshape(1, -1)
           ypred = Selectedmodel.predict(array1)
           if (Selected_diagnosis == 'Classification'):
             pred = np.argmax(ypred, axis =1)
-            pred_prob = ypred
+            pred_prob =  Selectedmodel.predict_proba(array1)
           else:
-            pred = np.argmax(ypred)
-            pred_prob = Selectedmodel.predict_proba(flatten)
+            pred = ypred
+            pred_prob = Selectedmodel.predict_proba(array1)
         else:
           featurevgg16 = base_model_Vgg16.predict(input)
           featurevgg16_np = np.array(featurevgg16)
@@ -428,8 +434,14 @@ if authentication_status:
           array1resnet50 = featureresnet50_np.flatten().reshape(1, -1)
           array1 = np.concatenate((array1vgg16, array1resnet50), axis=1)
           ypred = Selectedmodel.predict(array1)
-          pred = np.argmax(ypred, axis=1)
-          pred_prob = ypred
+          if (Selected_diagnosis == 'Classification'):
+            pred = np.argmax(ypred, axis =1)
+            pred_prob = Selectedmodel.predict_proba(array1)
+          else:
+            pred = ypred
+            pred_prob = Selectedmodel.predict_proba(array1)
+#          pred = np.argmax(ypred, axis=1)
+#          pred_prob = ypred
 #        if (selected_model == 'KNC-VGG16'):
 #          feature = base_model.predict(input)
 #        elif (selected_model == 'KNC-ResNet50'):
@@ -451,7 +463,7 @@ if authentication_status:
           prob = 100*pred_prob[0][0]
           st.write(f"<h4 style='text-align: left; color: orange;'>There is ** no tumor** detected with a probability of {prob:.2f}%.</h4>", unsafe_allow_html=True)
         if (selected_explainability == 'Cohort Level'):
-          if (selected_model == 'KNC' or selected_model=='Naive Bayes' or selected_model=='Logistic Regression' or selected_model == 'CNN' or selected_model=='VGG16' or selected_model == 'KNC-VGG16' or selected_model=='KNC-ResNet50' or selected_model == 'KNC-Fused_Future(VGG16+ResNet50)' or selected_model == 'Best Model(KNC-Resnet50)' ):
+          if (selected_model == 'KNC' or selected_model=='Naive Bayes' or selected_model=='Logistic Regression' or selected_model == 'CNN' or selected_model=='VGG16' or selected_model == 'KNC-VGG16' or selected_model=='KNC-ResNet50' or selected_model == 'KNC-Fused_Future(VGG16+ResNet50)' or selected_model == 'Best Model(KNC-ResNet50)' ):
             surrogate_model = load("surrogate_model.joblib")
             importances = surrogate_model.feature_importances_
           else:
