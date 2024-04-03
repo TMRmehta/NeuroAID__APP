@@ -542,13 +542,16 @@ if authentication_status:
   with Report_tab:
 ##  Display the retrieved records here
    if selected_history:
+    st.write('The value 0 respresents no tumor. The value 1 represents a glioma. The value 2 represents a meningioma. The value 3 represents a pituitary')
     result= s3.list_objects(Bucket='neuroaid')
+    i = 1
     for o in result['Contents']:
      if o.get('Key').startswith(username):
       #print(o['Key'])
       obj = s3.get_object(Bucket ="neuroaid",Key=o.get('Key'))
       body = obj.get('Body')
       stored_information = pickle.loads(body.read())
+      st.subheader('Record ' + str(i) + ':')
       st.write(stored_information['date'])
       st.write(stored_information['patient name'])
       st.image(stored_information['uploaded image'],channels='BGR')   
@@ -557,6 +560,7 @@ if authentication_status:
       st.write(stored_information['prediction'])
       st.write(stored_information['probabilities'])
       #st.image((stored_information['heatmap']/np.max(stored_information['heatmap'])))
+      i = i + 1         
 ##Unrelated images    
     if (selected_explainability == 'Cohort Level'):
       if (selected_ex_display == 'Feature Importance Pareto and Brain Heat Map'):
