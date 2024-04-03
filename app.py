@@ -544,18 +544,19 @@ if authentication_status:
    if selected_history:
     result= s3.list_objects(Bucket='neuroaid')
     for o in result['Contents']:
-     #print(o['Key'])
-     #obj = s3.get_object(Bucket ="neuroaid",Key='stored_information')
-     body = obj.get('Body')
-     stored_information = pickle.loads(body.read())
-     st.write(stored_information['date'])
-     st.write(stored_information['patient name'])
-     st.image(stored_information['uploaded image'],channels='BGR')   
-     st.write(stored_information['selected diagnosis'])
-     st.write(stored_information['selected model'])   
-     st.write(stored_information['prediction'])
-     st.write(stored_information['probabilities'])
-     #st.image((stored_information['heatmap']/np.max(stored_information['heatmap'])))
+     if o.get('Key').startswith(username):
+      #print(o['Key'])
+      #obj = s3.get_object(Bucket ="neuroaid",Key='stored_information')
+      body = o.get('Body')
+      stored_information = pickle.loads(body.read())
+      st.write(stored_information['date'])
+      st.write(stored_information['patient name'])
+      st.image(stored_information['uploaded image'],channels='BGR')   
+      st.write(stored_information['selected diagnosis'])
+      st.write(stored_information['selected model'])   
+      st.write(stored_information['prediction'])
+      st.write(stored_information['probabilities'])
+      #st.image((stored_information['heatmap']/np.max(stored_information['heatmap'])))
 ##Unrelated images    
     if (selected_explainability == 'Cohort Level'):
       if (selected_ex_display == 'Feature Importance Pareto and Brain Heat Map'):
