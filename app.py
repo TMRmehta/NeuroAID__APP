@@ -89,12 +89,12 @@ name, authentication_status, username = authenticator.login("NeuroAID Login", "m
 if authentication_status == None:
   st.warning("Please enter your username and password.")
   st.write(" :green[If you don't have an account and would like to signup, please send your name and email address to the NeuroAID administrator at mehtat124@gmail.com]")
-  st.write(" :green[Disclaimer: This application is for research and educational purposes only. it is not an FDA-approved or clinically validated diagnostic tool, and we fully acknowledge its current limitations.]")
+  st.write(" :yellow[Disclaimer: This application is for research and educational purposes only. it is not an FDA-approved or clinically validated diagnostic tool, and we fully acknowledge its current limitations.]")
 
 if authentication_status == False:
   st.error("Username/password is incorrect")
   st.write(" :green[If you don't have an account and would like to signup, please send your name and email address to the NeuroAID administrator at mentat124@gmail.com]")
-  st.write(" :green[Disclaimer: This application is for research and educational purposes only. it is not an FDA-approved or clinically validated diagnostic tool, and we fully acknowledge its current limitations.]")
+  st.write(" :yellow[Disclaimer: This application is for research and educational purposes only. it is not an FDA-approved or clinically validated diagnostic tool, and we fully acknowledge its current limitations.]")
 
 if authentication_status:
   s3 = boto3.client('s3', aws_access_key_id= st.secrets["aws"]["AWS_ACCESS_KEY_ID"], aws_secret_access_key=st.secrets["aws"]["AWS_SECRET_ACCESS_KEY"]) 
