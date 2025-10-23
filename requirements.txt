@@ -9,8 +9,6 @@ scikit_learn==1.2.2
 TensorFlow==2.15.0
 keras==2.15.0
 seaborn==0.13.2
-opencv-python-headless==4.9.0.80
-tf_keras_visstreamlit_authenticator==0.1.5
 gdown
 xgboost
 boto3
